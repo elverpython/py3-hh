@@ -20,6 +20,7 @@ from core.views import *
 from worker.views import *
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('vacancies/', vacancy_list),
     path('companys/', company_list),
     path('workers/', worker_list),
+    path("worker/<int:id>/", worker_info),
 ]
