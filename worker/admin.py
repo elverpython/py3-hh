@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import Worker
-from .models import Comment
-from .models import Resume
-
+from .models import Worker, Comment, Resume
 
 
 admin.site.register(Worker)

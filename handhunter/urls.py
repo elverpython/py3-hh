@@ -29,6 +29,9 @@ urlpatterns = [
     path('addresses/', addresses),
     path('vacancies/', vacancy_list),
     path('companys/', company_list),
-    path('workers/', worker_list),
+    path("workers/", worker_list),
     path("worker/<int:id>/", worker_info),
+    path("resume-list/", resume_list),
+    path("resume-info/<int:id>/", resume_info),
+    path("my-resume/", my_resume, name='my-resume'),
 ]
