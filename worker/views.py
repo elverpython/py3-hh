@@ -37,3 +37,4 @@ def my_resume(request):
         request, 'resume/resume_list.html',
         {"resumes": resume_query}
     )
+

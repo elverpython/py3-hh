@@ -35,17 +35,14 @@ class Comment(models.Model):
         return self.autor.username
 
 class Resume(models.Model):
-    title = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    salary = models.IntegerField(null=True, blank=True)
-    specialization = models.CharField(max_length=255)
-    is_relevant = models.BooleanField(default=True)
-    email = models.EmailField()
-    contacts = models.CharField(max_length=100, verbose_name='Контакты')
-    candidate = models.ManyToManyField(
+    worker = models.ForeignKey(
         to=Worker,
-        blank=True,
+        on_delete=models.CASCADE,
+        related_name='resume'
     )
+    title = models.CharField(max_length=55)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
