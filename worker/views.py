@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .models import Worker, Resume
 
 # Create your views here.
@@ -37,4 +37,18 @@ def my_resume(request):
         request, 'resume/resume_list.html',
         {"resumes": resume_query}
     )
+
+def add_resume(request):
+    template = 'resume/resume_add.html'
+    if request.method == "GET":
+        # показать форму
+        return render(request, template)
+    elif request.method == "POST":
+        # записать резюме в БД
+        new_resume = Resume()
+        new_resume.worker = request.user.worker
+        new_resume.title = request.POST["form-title"]
+        new_resume.text = request.POST["form-text"]
+        new_resume.save()
+        return HttpResponse("Запись добавлена!")
 

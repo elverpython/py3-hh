@@ -39,9 +39,18 @@ def company_list(request):
     context = {"companys": companys}
     return render(request, 'companys.html', context)
 
-def vacancy(request, id):
-    vacancy = Vacancy.objects.get(id=id)
-    return render(
-        request, 'vacancy/vacancy.html',
-        {'vacancy': vacancy}
-    )
+def vacancy_detail(request, id):
+    vacancy_object = Vacancy.objects.get(id=id)  # 1
+    candidates = vacancy_object.candidate.all()  # list
+    context = {
+        'vacancy': vacancy_object,
+        'candidates_list': candidates,
+    }
+    return render(request, 'vacancy/vacancies.html', context)
+
+
+def search(request):
+    word = request.GET["keyword"]
+    vacancy_list = Vacancy.objects.filter(title__contains=word)
+    context = {"vacancies": vacancy_list}
+    return render(request, 'vacancies.html', context)

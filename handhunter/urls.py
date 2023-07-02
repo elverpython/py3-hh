@@ -28,11 +28,14 @@ urlpatterns = [
     path('contacts/', contacts),
     path('addresses/', addresses),
     path('vacancies/', vacancy_list),
+    path("vacancy/<int:id>/", vacancy_detail, name='vacancy_object'),
     path('companys/', company_list),
     path("workers/", worker_list),
     path("worker/<int:id>/", worker_info),
     path("resume-list/", resume_list),
     path("resume-info/<int:id>/", resume_info),
     path("my-resume/", my_resume, name='my-resume'),
-    path("vacancy/<int:id>/", vacancy),
+    path('search/', search, name='search'),
+    path('add-resume/', add_resume, name='add-resume'),
+
 ]
