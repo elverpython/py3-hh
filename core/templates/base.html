@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'my_style.css' %}">
     <title>
         {% block my_title %}
             Hand Hunter
@@ -11,8 +13,12 @@
 <body>
     <nav>
         <a href="/">Домой</a> |
+        <a href="/companys">Компании</a> |
+        <a href="/companys-form">Добавить компанию</a> |
+        <a href="/add-company-df">Добавить компанию (dj form)</a> |
         <a href="/vacancies">Вакансии</a> |
         <a href="/add-vacancy">Добавить вакансию</a> |
+        <a href="/add-vacancy-df">Добавить вакансию (dj form)</a> |
         <a href="/workers">Кандидаты</a> |
         <a href="/resume-list">Резюме</a> |
 
@@ -20,6 +26,8 @@
         {% if request.user.is_authenticated %}
         <a href="{% url 'my-resume' %}">Мои Резюме</a> |
         <a href="{% url 'add-resume' %}">Добавить Резюме</a> |
+        <a href="/add-resume-df">Добавить Резюме (dj form)</a> |
+
             Привет, {{ request.user.username }}!
         {% else %}
         <a href="{% url 'reg' %}">Регистрация</a> |

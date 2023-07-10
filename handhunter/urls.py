@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from core.views import *
 from worker.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
@@ -29,17 +31,29 @@ urlpatterns = [
     path('addresses/', addresses),
     path('vacancies/', vacancy_list),
     path('vacancy/<int:id>/', vacancy_detail, name='vacancy-info'),
+    path('vacancy-edit-form/<int:id>/', vacancy_edit_form, name='vacancy-edit-form'),
     path('vacancy-edit/<int:id>/', vacancy_edit, name='vacancy-edit'),
     path('add-vacancy/', vacancy_add),
+    path('add-vacancy-df/', vacancy_add_via_django_form),
     path('companys/', company_list),
+    path('company-info/<int:id>/', company_info),
+    path('companys-edit/<int:id>/', company_edit, name='companys-edit'),
+    path('add-company/', companys_add),
+    path('add-company-df/', company_add_via_django_form),
     path("workers/", worker_list),
     path("worker/<int:id>/", worker_info),
     path("resume-list/", resume_list),
     path("resume-info/<int:id>/", resume_info),
-    path('resume-edit/<int:id>/', resume_edit, name='resume-edit'),
+    path('resume-edit-form/<int:id>/', resume_edit_form, name='resume-edit-form'),
+    path("resume-edit/<int:id>/", resume_edit, name="resume-edit"),
     path("my-resume/", my_resume, name='my-resume'),
     path('search/', search, name='search'),
     path('add-resume/', add_resume, name='add-resume'),
+    path('add-resume-df/', resume_add_via_django_form),
     path('registration/', reg_view, name='reg'),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# ...:8000/static/my_style.css
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

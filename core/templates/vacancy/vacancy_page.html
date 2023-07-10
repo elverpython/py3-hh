@@ -13,5 +13,7 @@
             <li>{{ candidate.name }}</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'vacancy-edit' vacancy.id %}">Изменить</a>
+    <a href="{% url 'vacancy-edit' vacancy.id %}">Изменить через django форму</a>
+     <br><br><br>
+    <a href="{% url 'vacancy-edit-form' vacancy.id %}">Изменить</a>
 {% endblock %}

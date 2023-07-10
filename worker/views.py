@@ -1,5 +1,7 @@
-from django.shortcuts import render,redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Worker, Resume
+from .forms import ResumeEditForm
+from .forms import ResumeForm
 
 # Create your views here.
 
@@ -29,6 +31,22 @@ def resume_info(request, id):
         {'resume': resume_object}
     )
 
+def resume_edit(request, id):
+    resume_object = Resume.objects.get(id=id)
+
+    if request.method == "GET":
+        form = ResumeEditForm(instance=resume_object)
+        return render(request, "resume/resume_edit.html", {"form": form})
+
+    elif request.method == "POST":
+        form = ResumeEditForm(data=request.POST, instance=resume_object)
+        if form.is_valid():
+            obj = form.save()
+            return redirect(resume_info, id=obj.id)
+        else:
+            return HttpResponse("Форма не валидна")
+
+
 
 def my_resume(request):
     resume_query = Resume.objects.filter(worker=request.user.worker)
@@ -52,7 +70,22 @@ def add_resume(request):
         new_resume.save()
         return HttpResponse("Запись добавлена!")
 
-def resume_edit(request, id):
+def resume_add_via_django_form(request):
+    if request.method == "POST":
+        form = ResumeForm(request.POST)
+        if form.is_valid():
+            new_resume = form.save(commit=False)
+            new_resume.worker = request.user.worker
+            return redirect(f'/resume-info/{new_resume.id}/')
+    resume_add = ResumeForm()
+    return render(
+        request,
+        'resume/resume_django_form.html',
+        {"resume_add": resume_add}
+    )
+
+
+def resume_edit_form(request, id):
     resume = Resume.objects.get(id=id)
     if request.method == "POST":
         resume.title = request.POST["title"]

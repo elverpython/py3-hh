@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="name"required><br><br>
+        <input type="date" name="founding_date" placeholder="founding_date"><br><br>
+        <input type="text" name="address" placeholder="address"required><br><br>
+        <input type="number" name="number_of_employees" placeholder="number_of_employees"><br><br>
+        <button>Добавить</button>
+    </form>
+
+{% endblock %}

@@ -9,6 +9,8 @@
     <div>{{ resume.created_at }}</div>
 
      </ul>
-    <a href="{% url 'resume-edit' resume.id %}">Изменить</a>
+    <a href="{% url 'resume-edit' resume.id %}">Изменить через django форму</a>
+     <br><br><br>
+    <a href="{% url 'resume-edit-form' resume.id %}">Изменить</a>
 
 {% endblock %}

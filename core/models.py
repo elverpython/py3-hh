@@ -48,6 +48,7 @@ class Category(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
+    founding_date = models.CharField(max_length=100)
     address = models.CharField(max_length=255)
     number_of_employees = models.IntegerField(null=True, blank=True)
     is_hunting = models.BooleanField(default=True)

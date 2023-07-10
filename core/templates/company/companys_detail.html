@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>{{ company.name }}</h1>
+    <div>{{ company.address }}</div>
+    <hr/>
+    <div>{{ company.number_of_employees}}</div>
+
+     </ul>
+    <a href="{% url 'companys-edit' company.id %}">Изменить через django форму</a>
+
+
+{% endblock %}

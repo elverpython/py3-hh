@@ -38,7 +38,7 @@ class Resume(models.Model):
     worker = models.ForeignKey(
         to=Worker,
         on_delete=models.CASCADE,
-        related_name='resume'
+        related_name='resume',
     )
     title = models.CharField(max_length=55)
     text = models.TextField()
