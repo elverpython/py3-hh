@@ -70,8 +70,8 @@ def company_add_via_django_form(request):
     if request.method == "POST":
         form = CompanyForm(request.POST)
         if form.is_valid():
-            new_company = form.save
-            return redirect(f'/company/{new_company.id}/')
+            new_company = form.save()
+            return redirect(f'/company-info/{new_company.id}/')
     companys_form = CompanyForm()
     return render(
         request,
@@ -90,7 +90,7 @@ def company_edit(request, id):
         form = CompanyEditForm(data=request.POST, instance=company_object)
         if form.is_valid():
             obj = form.save()
-            return redirect(company_list(), id=obj.id)
+            return redirect(company_info, id=obj.id)
         else:
             return HttpResponse("Форма не валидна")
 

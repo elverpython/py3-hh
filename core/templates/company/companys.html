@@ -11,8 +11,8 @@
     <h1>Компании</h1>
 
     {% for c in companys %}
-        <div>{{ c.name }} - {{ c.number_of_employees }}</div>
-    <div><a href="/companys/{{ c.id }}">{{ c.name }}</a></div>
+
+    <div><a href="/company-info/{{ c.id }}">{{ c.name }}</a></div>
     {% endfor %}
 
 </body>
