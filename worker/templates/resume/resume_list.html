@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <h1>Резюме</h1>
     {% for r in resumes %}
         <div><a href="/resume-info/{{ r.id }}">{{ r.title }}</a></div>
     {% endfor %}

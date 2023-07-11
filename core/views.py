@@ -63,7 +63,7 @@ def companys_add(request):
 
         )
         new_company.save()
-        return redirect(f'/company/{new_company.id}/')
+        return redirect(f'/company-info/{new_company.id}/')
     return render(request, 'company/companys_form.html')
 
 def company_add_via_django_form(request):
