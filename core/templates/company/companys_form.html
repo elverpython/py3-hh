@@ -4,11 +4,34 @@
 
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name="name" placeholder="name"required><br><br>
-        <input type="date" name="founding_date" placeholder="founding_date"><br><br>
-        <input type="text" name="address" placeholder="address"required><br><br>
-        <input type="number" name="number_of_employees" placeholder="number_of_employees"><br><br>
-        <button>Добавить</button>
+<!--        <input type="text" name="name" placeholder="name"required><br><br>-->
+<!--        <input type="date" name="founding_date" placeholder="founding_date"><br><br>-->
+<!--        <input type="text" name="address" placeholder="address"required><br><br>-->
+<!--        <input type="number" name="number_of_employees" placeholder="number_of_employees"><br><br>-->
+<!--        <button>Добавить</button>-->
+      <form method="POST">
+      {% csrf_token %}
+          <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Название компании:</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Введите название" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="founding_date" class="form-label">Дата основания:</label>
+            <input type="date" id="founding_date" name="founding_date" class="form-control" placeholder="Введите дату">
+        </div>
+
+         <div class="mb-3 mt-3">
+            <label for="address" class="form-label">Адрес компании:</label>
+            <input type="text" name="address" class="form-control" id="address" placeholder="Введите название" required>
+         </div>
+
+         <div class="mb-3 mt-3">
+            <label for="number_of_employees" class="form-label">Количество сотрудников:</label>
+            <input type="number" name="number_of_employees" class="form-control" id="number_of_employees" placeholder="Введите количество">
+         </div>
+
+          <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
 
 {% endblock %}
