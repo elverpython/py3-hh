@@ -39,7 +39,11 @@ def resume_edit(request, id):
         return render(request, "resume/resume_edit.html", {"form": form})
 
     elif request.method == "POST":
-        form = ResumeEditForm(data=request.POST, instance=resume_object)
+        form = ResumeEditForm(
+            data=request.POST,
+            instance=resume_object,
+            files=request.FILES
+        )
         if form.is_valid():
             obj = form.save()
             return redirect(resume_info, id=obj.id)
@@ -76,6 +80,7 @@ def resume_add_via_django_form(request):
         if form.is_valid():
             new_resume = form.save(commit=False)
             new_resume.worker = request.user.worker
+            new_resume.save()
             return redirect(f'/resume-info/{new_resume.id}/')
     resume_add = ResumeForm()
     return render(

@@ -46,47 +46,58 @@
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="/resume-list">Резюме</a>
-                </li>
-                {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'my-resume' %}">Мои Резюме</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'add-resume' %}">Добавить Резюме</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/add-resume-df">Добавить Резюме (dj form)</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'reg' %}">Регистрация</a>
-                </li>
-            {% endif %}
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <div>
-            <br>
-            <form method="GET" action="/search">
-                <input
-                        type="text"
-                        placeholder="Ключевое слово"
-                        name="keyword">
-                <button class="btn btn-warning">Поиск</button>
-            </form>
-        </div>
-        <hr>
 
-        <div class="container">
+                    {% if request.user.is_authenticated %}
+                       <li class="nav-item">
+                       <a class="nav-link" href="{% url 'my-resume' %}">Мои Резюме</a>
+                       </li>
+                       <li class="nav-item">
+                       <a class="nav-link" href="{% url 'add-resume' %}">Добавить Резюме</a>
+                       </li>
+                       <li class="nav-item">
+                       <a class="nav-link" href="/add-resume-df">Добавить Резюме (dj form)</a>
+                       </li>
+                    {% else %}
+                       <li class="nav-item">
+                       <a class="nav-link" href="{% url 'reg' %}">Регистрация</a>
+                       </li>
+                       <li class="nav-item">
+                       <a class="nav-link" href="{% url 'sign-in' %}">Вход</a>
+                       </li>
+                    {% endif %}
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sign-out' %}">Выйти</a>
+                        </li>
+               </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+        <br>
+        <form method="GET" action="/search">
+            <input
+                    type="text"
+                    placeholder="Ключевое слово"
+                    name="keyword">
+            <button class="btn btn-warning">Поиск</button>
+        </form>
+    </div>
+    <hr>
+
+    {% block custom_container %}
+
+    <div class="container">
         {% block content %}
         {% endblock %}
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <footer>
-            <hr>
-            +996777333222<br/>
-            Адрес: Бишкек, 7 м-н
-        </footer>
-    </body>
-    </html>
+    </div>
+
+    {% endblock %}
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <hr>
+        +996777333222<br/>
+        Адрес: Бишкек, 7 м-н
+    </footer>
+</body>
+</html>

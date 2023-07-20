@@ -51,9 +51,11 @@ urlpatterns = [
     path('add-resume/', add_resume, name='add-resume'),
     path('add-resume-df/', resume_add_via_django_form),
     path('registration/', reg_view, name='reg'),
+    path('sign-in/', sign_in, name='sign-in'),
+    path('sign-out/', sign_out, name='sign-out'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-# ...:8000/static/my_style.css
+# ...:8000/static/my_style.css  #  .../handhunter/core/static/my_style.css
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

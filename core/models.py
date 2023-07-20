@@ -53,6 +53,10 @@ class Company(models.Model):
     number_of_employees = models.IntegerField(null=True, blank=True)
     is_hunting = models.BooleanField(default=True)
 
-
+    workers = models.ManyToManyField(
+        to=Worker,
+        blank=True,
+        related_name='company',
+    )
     def __str__(self):
         return self.name
