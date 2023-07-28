@@ -1,7 +1,5 @@
 from django import forms
-from .models import Vacancy
-from .models import Company
-
+from .models import Vacancy, Company
 
 class VacancyForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control my-input"}))
@@ -13,7 +11,11 @@ class VacancyForm(forms.ModelForm):
             'salary',
             'description',
             'email',
-            'contacts'
+            'contacts',
+            'required_work_experience',
+            'employment',
+            'skill'
+
         ]
 
 class VacancyEditForm(forms.ModelForm):

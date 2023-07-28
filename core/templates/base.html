@@ -44,19 +44,26 @@
                     <li><a class="dropdown-item" href="/add-vacancy-df">Добавить вакансию (dj form)</a></li>
                   </ul>
                 </li>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Рекрутеры</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/recruit/list">Список рекрутеров</a></li>
+                    <li><a class="dropdown-item" href="/recruit/create">Добавить рекрутера</a></li>
+                  </ul>
+                </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/resume-list">Резюме</a>
+                <a class="nav-link" href="/resume-list"> Список резюме</a>
 
                     {% if request.user.is_authenticated %}
-                       <li class="nav-item">
-                       <a class="nav-link" href="{% url 'my-resume' %}">Мои Резюме</a>
-                       </li>
-                       <li class="nav-item">
-                       <a class="nav-link" href="{% url 'add-resume' %}">Добавить Резюме</a>
-                       </li>
-                       <li class="nav-item">
-                       <a class="nav-link" href="/add-resume-df">Добавить Резюме (dj form)</a>
-                       </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Резюме</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'my-resume' %}">Мои Резюме</a></li>
+                    <li><a class="dropdown-item" href="{% url 'add-resume' %}">Добавить Резюме</a></li>
+                    <li><a class="dropdown-item" href="/add-resume-df">Добавить Резюме (dj form)</a></li>
+                  </ul>
+                </li>
                     {% else %}
                        <li class="nav-item">
                        <a class="nav-link" href="{% url 'reg' %}">Регистрация</a>

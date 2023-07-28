@@ -31,7 +31,9 @@ class Vacancy(models.Model):
     is_relevant = models.BooleanField(default=True)
     email = models.EmailField()
     contacts = models.CharField(max_length=100, verbose_name='Контакты')
-    required_work_experience = models.IntegerField(null=True, blank=True)
+    required_work_experience = models.IntegerField(null=True,
+    blank=True,
+    verbose_name='Необходимый опыт работы')
     type_of_employment = [
         ('full time work', 'полный рабочий день'),
         ('part-time employment', 'частичная занятость'),
@@ -43,6 +45,19 @@ class Vacancy(models.Model):
         choices=type_of_employment,
         default='full time work',
         verbose_name='Занятость'
+    )
+
+    type_of_skill = [
+        ('junior', 'junior'),
+        ('middle', 'middle'),
+        ('senior', 'senior'),
+
+    ]
+    skill = models.CharField(
+        max_length=20,
+        choices=type_of_skill,
+        default='junior',
+        verbose_name='Навыки'
     )
 
     candidate = models.ManyToManyField(
