@@ -9,7 +9,7 @@ class Worker(models.Model):
         blank=False,
         on_delete=models.CASCADE
     )
-    name = models.CharField(max_length=255)
+    # name = models.CharField(max_length=255)
     specialization = models.CharField(max_length=255)
     expected_salary = models.IntegerField(null=True, blank=True)
     is_searching = models.BooleanField(default=True)

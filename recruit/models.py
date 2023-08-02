@@ -13,6 +13,11 @@ class Recruiter(models.Model):
     payment_for_found = models.IntegerField(null=True, blank=True)
     bonus_percent = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
 
+    def get_absolute_url(self):
+        return '/recruit/list/'
+
+
+
 
 
 

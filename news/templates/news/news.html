@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Новости</h1>
+    {% for r in news %}
+        <div><a href="/news/{{ r.id }}">{{ r.title }}</a></div>
+    {% endfor %}
+
+
+{% endblock %}

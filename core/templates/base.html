@@ -25,6 +25,13 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/">Домой</a>
                 </li>
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Новости</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/news/news/<int:id>/">Список новостей</a></li>
+                    <li><a class="dropdown-item" href="/news/add-news-df">Добавить новость</a></li>
+                  </ul>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Компании</a>
                   <ul class="dropdown-menu">
@@ -90,7 +97,13 @@
             <button class="btn btn-warning">Поиск</button>
         </form>
     </div>
-    <hr>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {% block custom_container %}
 

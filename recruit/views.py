@@ -37,7 +37,7 @@ class RecruiterCreateView(CreateView):
 
 
 class RecruiterUpdateView(View):
-    template = "recruit/update.html"
+    template = "recruit/recruit_update_form.html"
 
     def get_context(self, **kwargs):
         id = kwargs["id"]
@@ -77,6 +77,7 @@ class RecruiterUpdateView(View):
 
 class RecruiterGenericUpdateView(UpdateView):
     model = Recruiter
-    fields = [f.name for f in Recruiter._meta.get_fields() if f.name not in ['id', 'user']]
-    template_name = 'recruit/generic_update.html'  # recruiter_form.html
-    success_url = reverse_lazy('recruiter-list-class')
+    fields = '__all__'
+    template_name_suffix = "_update_form"
+
+
