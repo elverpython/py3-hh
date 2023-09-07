@@ -58,9 +58,10 @@ urlpatterns = [
     path('sign-out/', sign_out, name='sign-out'),
     path('recruit/', include('recruit.urls')),
     path("news/", news_list, name="news"),
-    path("news-info/<int:id>/", news_info, name="news-info"),
+    # path("news-info/<int:id>/", news_info, name="news-info"),
+    path("news-info/<int:id>/", ArticleNewDetail.as_view(), name="news-info"),
     path('add-news-df/', news_add),
-    path('news-edit/<int:id>/', news_edit, name='news-edit'),
+    path('news-edit/<int:id>/', news_edit, name="news-edit"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # ...:8000/static/my_style.css  #  .../handhunter/core/static/my_style.css

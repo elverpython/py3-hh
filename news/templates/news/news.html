@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>Новости</h3>
+    <h1>Новости</h1>
     {% for r in news %}
         <div><a href="{% url 'news-info' r.id %}">{{ r.title }}</a></div>
     {% endfor %}
